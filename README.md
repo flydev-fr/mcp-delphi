@@ -56,9 +56,18 @@ pnpm run dev
 - delphi.clean
   - params: same as delphi.build
   - Cleans the project.
+- fpc.build
+  - params: source (string, path to .lpr/.pas), output? (string), defines? (string[]), unitPaths? (string[]), includePaths? (string[]), cpu? (string), os? (string), fpcPath? (string)
+  - Compiles a Pascal program using Free Pascal Compiler. You can pass an explicit fpcPath or rely on PATH.
+- lazarus.build
+  - params: project (string, path to .lpi), buildMode? (string), cpu? (string), os? (string), lazbuildPath? (string)
+  - Builds a Lazarus project using lazbuild. Optionally set CPU/OS or build mode.
+- lazarus.clean
+  - params: project (string, path to .lpi), lazbuildPath? (string)
+  - Cleans Lazarus build artifacts via lazbuild --clean.
 
 ### Test projects and scripts
-This repo includes small Delphi test projects in `test/projects` and helper scripts in `scripts/`:
+This repo includes small Delphi test projects in `test/projects`, and a Lazarus sample in `test/projects/lazarus`. Helper scripts live in `scripts/`.
 - Build all Release targets:
   - `pnpm run test:build:all`
 - Build individually (examples):
@@ -70,7 +79,8 @@ This repo includes small Delphi test projects in `test/projects` and helper scri
   - `pnpm run test:build:group:win64`
 - Clean variants also exist under `test:clean:*`.
 
-## Example invocation 
+## Example invocations
+- Delphi via MSBuild
 ```
 {
   "name": "delphi.build",
@@ -82,14 +92,37 @@ This repo includes small Delphi test projects in `test/projects` and helper scri
 }
 ```
 
+- FPC on Windows (using explicit compiler path)
+```
+{
+  "name": "fpc.build",
+  "arguments": {
+    "source": "C:/path/to/lazarus/project1.lpr",
+    "cpu": "x86_64",
+    "os": "win64",
+    "fpcPath": "C:/path/to/fpc.exe"
+  }
+}
+```
+
+- Lazarus via lazbuild on Windows
+```
+{
+  "name": "lazarus.build",
+  "arguments": {
+    "project": "C:/path/to/lazarus/project1.lpi",
+    "cpu": "x86_64",
+    "os": "win64",
+    "lazbuildPath": "C:/path/to/lazbuild.exe"
+  }
+}
+```
+
 ## Notes
-- Windows-only. Requires RAD Studio toolchain and MSBuild.
+- Windows-first. Delphi integration requires RAD Studio toolchain and MSBuild.
 - For RAD Studio, rsvars.bat sets required environment variables (like BDS, FrameworkDir, Library path). It is recommended to set RSVARS_BAT to ensure the Delphi toolchain is available to MSBuild.
 - Group projects (.groupproj) are supported; MSBuild will traverse contained projects.
-
-Planned:
-- Add FPC support to the setup.
-- Provide a special mORMot2-oriented release/preset.
+- FPC/Lazarus support is included via fpc and lazbuild. Provide explicit paths on Windows if they are not in PATH.
 
 ## Publish
 - Ensure `dist` is built: `pnpm run build`
