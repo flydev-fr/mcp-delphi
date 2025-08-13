@@ -30,6 +30,9 @@ importers:
       typescript:
         specifier: ^5.5.4
         version: 5.9.2
+      zod-to-json-schema:
+        specifier: ^3.24.6
+        version: 3.24.6(zod@3.25.76)
 
 packages:
 
