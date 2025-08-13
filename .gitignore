@@ -21,3 +21,41 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
+# Delphi build artifacts (tests and local builds)
+# Common output folders
+**/Win32/Debug/
+**/Win32/Release/
+**/Win64/Debug/
+**/Win64/Release/
+
+# Intermediate files
+*.dcu
+*.dcp
+*.dcpil
+*.bpl
+*.dres
+*.dsk
+*.local
+*.identcache
+*.stat
+*.tvsconfig
+*.dproj.local
+*.~*
+
+# Generated executables and libs
+*.exe
+*.dll
+*.bpi
+*.lib
+*.obj
+*.map
+*.tds
+
+# Backup and temp
+__history/
+__recovery/
+*.tmp
+*.bak
+
+# Test project autosaves
+/test/**/autosave*/
