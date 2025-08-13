@@ -1,0 +1,62 @@
+{
+  "name": "mcp-delphi-build",
+  "version": "1.0.0",
+  "type": "module",
+  "private": false,
+  "description": "An MCP (Model Context Protocol) server exposing tools to build and clean Delphi projects (.dproj/.groupproj) via MSBuild on Windows.",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "delphi",
+    "rad-studio",
+    "msbuild",
+    "windows",
+    "build",
+    "tools"
+  ],
+  "bin": {
+    "mcp-delphi-server": "dist/server.js"
+  },
+  "files": [
+    "dist/**",
+    "src/**",
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "start": "node --env-file=.env dist/server.js",
+    "build": "tsc -p tsconfig.json",
+    "start:env": "node --env-file=.env dist/server.js",
+    "test:build:console:win32": "node scripts/test-build.mjs test/projects/console/Project1.dproj Win32 Release",
+    "test:build:console:win64": "node scripts/test-build.mjs test/projects/console/Project1.dproj Win64 Release",
+    "test:build:vcl:win32": "node scripts/test-build.mjs test/projects/vcl/Project1.dproj Win32 Release",
+    "test:build:vcl:win64": "node scripts/test-build.mjs test/projects/vcl/Project1.dproj Win64 Release",
+    "test:build:group:win32": "node scripts/test-build.mjs test/projects/ProjectGroup1.groupproj Win32 Release",
+    "test:build:group:win64": "node scripts/test-build.mjs test/projects/ProjectGroup1.groupproj Win64 Release",
+    "test:clean:console:win32": "node scripts/test-clean.mjs test/projects/console/Project1.dproj Win32 Release",
+    "test:clean:console:win64": "node scripts/test-clean.mjs test/projects/console/Project1.dproj Win64 Release",
+    "test:clean:vcl:win32": "node scripts/test-clean.mjs test/projects/vcl/Project1.dproj Win32 Release",
+    "test:clean:vcl:win64": "node scripts/test-clean.mjs test/projects/vcl/Project1.dproj Win64 Release",
+    "test:clean:group:win32": "node scripts/test-clean.mjs test/projects/ProjectGroup1.groupproj Win32 Release",
+    "test:clean:group:win64": "node scripts/test-clean.mjs test/projects/ProjectGroup1.groupproj Win64 Release",
+    "test:build:all": "npm run test:build:console:win32 && npm run test:build:console:win64 && npm run test:build:vcl:win32 && npm run test:build:vcl:win64 && npm run test:build:group:win32 && npm run test:build:group:win64"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "dotenv": "^16.4.5",
+    "ws": "^8.18.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  }
+}
