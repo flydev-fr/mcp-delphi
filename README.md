@@ -97,10 +97,10 @@ This repo includes small Delphi test projects in `test/projects`, and a Lazarus 
 {
   "name": "fpc.build",
   "arguments": {
-    "source": "C:/Users/flydev/Documents/Embarcadero/Studio/Projets/SKOM-PROJECT/delphi-mcp-server/test/projects/lazarus/project1.lpr",
+    "source": "C:/path/to/lazarus/project1.lpr",
     "cpu": "x86_64",
     "os": "win64",
-    "fpcPath": "C:/fpcupdeluxe/fpcupdeluxe/fpc/bin/x86_64-win64/fpc.exe"
+    "fpcPath": "C:/path/to/fpc.exe"
   }
 }
 ```
@@ -110,10 +110,10 @@ This repo includes small Delphi test projects in `test/projects`, and a Lazarus 
 {
   "name": "lazarus.build",
   "arguments": {
-    "project": "C:/Users/flydev/Documents/Embarcadero/Studio/Projets/SKOM-PROJECT/delphi-mcp-server/test/projects/lazarus/project1.lpi",
+    "project": "C:/path/to/lazarus/project1.lpi",
     "cpu": "x86_64",
     "os": "win64",
-    "lazbuildPath": "C:/fpcupdeluxe/fpcupdeluxe/lazarus/lazbuild.exe"
+    "lazbuildPath": "C:/path/to/lazbuild.exe"
   }
 }
 ```
