@@ -2,6 +2,10 @@
 
 An MCP (Model Context Protocol) server that exposes tools to build and clean Delphi projects (.dproj/.groupproj) on Windows using MSBuild, initializing the RAD Studio environment via rsvars.bat.
 
+<a href="https://glama.ai/mcp/servers/@flydev-fr/mcp-delphi">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@flydev-fr/mcp-delphi/badge" alt="Delphi Build Server MCP server" />
+</a>
+
 ## Prerequisites
 - Windows
 - Node.js >= 18
@@ -131,4 +135,3 @@ This repo includes small Delphi test projects in `test/projects`, and a Lazarus 
   - `npm publish` (or `pnpm publish`)
 
 If publishing under a scope, set the package name accordingly and ensure you are logged in with proper access.
-
